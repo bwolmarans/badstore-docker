@@ -280,7 +280,7 @@ sub admin
 
 	print start_form(-action=>'/cgi-bin/badstore.cgi?action=adminportal'),
 	p, h2("Where do you want to be taken today?"),
-	popup_menu(-name=>'admin', -values=>['View Sales Reports','Reset User Password','Add User','Delete User','Show Current Users','Troubleshooting','Backup Databases']),
+	popup_menu(-name=>'admin', -values=>['Reset Comments Database','View Sales Reports','Reset User Password','Add User','Delete User','Show Current Users','Troubleshooting','Backup Databases']),
 	submit('Do It'), end_form,
 	end_page();
 }
@@ -315,7 +315,10 @@ sub adminportal
 	### Connect to the SQL Database ###
 	my $dbh = DBI->connect("DBI:mysql:database=badstoredb;host=localhost", "root", "secret",{'RaiseError' => 1})
 	or die "Cannot connect: " . $DBI::errstr;
-	
+		### Reset Comments Database -brettw 2021 ###
+                if ($aquery eq 'Reset Comments Database') {
+                        truncate '/data/apache2/data/guestbookdb', 0;
+                }
 		### Prepare the Sales Report ###
 		if ($aquery eq 'View Sales Reports') {
 		my $sth = $dbh->prepare("SELECT * FROM orderdb ORDER BY 'orderdate','ordertime'")
