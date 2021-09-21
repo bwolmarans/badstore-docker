@@ -1,7 +1,7 @@
 # Dockerfile for Badstore
 # Apache HTTP foreground https://github.com/chriswayg/apache-php
 
-FROM debian:11
+FROM debian:stretch
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && rm -r /var/lib/apt/lists/*
 
 COPY apache2/conf/badstore.conf /etc/apache2/sites-available/
+COPY apache2/conf/ports.conf /etc/apache2/
 
 # Setup Apache
 RUN a2enmod ssl \
@@ -64,7 +65,7 @@ RUN rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 WORKDIR /var/www/html
 
-EXPOSE 80
+EXPOSE 8181
 
 # copy supervisor conf
 ADD supervisor/conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
