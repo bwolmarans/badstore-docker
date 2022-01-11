@@ -2,6 +2,8 @@
 
 BadStore.net presents a 3-tier web app with security mistakes for training, evaluation, and testing.
 
+As a classic Barraucda vulnerable app and original vuln for the OWASP vulnerable apps project, I am trying to inject new life into classic Badstore.
+
 ## Introduction
 BadStore.net presents a typical three-tier web storefront application. This self-contained application was built from the ground up with typical security mistakes to serve as a platform for demonstration, security training, evaluation, and testing purposes.
 
