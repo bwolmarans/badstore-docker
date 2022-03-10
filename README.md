@@ -1,5 +1,7 @@
 # Badstore docker
 
+Thanks to the original author, Kurt Roemer.  
+
 BadStore.net presents a 3-tier web app with security mistakes for training, evaluation, and testing.
 
 As a classic Barraucda vulnerable app and original vuln for the OWASP vulnerable apps project, I am trying to inject new life into classic Badstore.
